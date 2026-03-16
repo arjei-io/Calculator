@@ -1,8 +1,10 @@
 ﻿using System.Text.RegularExpressions;
+using CalculatorLibrary;
 
-namespace Calculator
+namespace CalculatorProgram
 {
-    internal class Program
+
+    class Program
     {
         static void Main(string[] args)
         {
@@ -11,6 +13,7 @@ namespace Calculator
             Console.WriteLine("Console Calculator in C#\r");
             Console.WriteLine("------------------------\n");
 
+            Calculator calculator = new Calculator();
             while (!endApp)
             {
                 // Declare variables and set to empty.
@@ -26,7 +29,7 @@ namespace Calculator
                 double cleanNum1 = 0;
                 while (!double.TryParse(numInput1, out cleanNum1))
                 {
-                    Console.Write("This is not valid input. Please enter a numeric value: ");
+                    Console.Write("This is not valid input. Please enter an integer value: ");
                     numInput1 = Console.ReadLine();
                 }
 
@@ -37,7 +40,7 @@ namespace Calculator
                 double cleanNum2 = 0;
                 while (!double.TryParse(numInput2, out cleanNum2))
                 {
-                    Console.Write("This is not valid input. Please enter a numeric value: ");
+                    Console.Write("This is not valid input. Please enter an integer value: ");
                     numInput2 = Console.ReadLine();
                 }
 
@@ -60,7 +63,7 @@ namespace Calculator
                 {
                     try
                     {
-                        result = Calculator.DoOperation(cleanNum1, cleanNum2, op);
+                        result = calculator.DoOperation(cleanNum1, cleanNum2, op);
                         if (double.IsNaN(result))
                         {
                             Console.WriteLine("This operation will result in a mathematical error.\n");
@@ -80,6 +83,7 @@ namespace Calculator
 
                 Console.WriteLine("\n"); // Friendly linespacing.
             }
+            calculator.Finish();
             return;
         }
     }
