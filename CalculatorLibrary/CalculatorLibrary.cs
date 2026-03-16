@@ -57,6 +57,30 @@ namespace CalculatorLibrary
                     }
                     writer.WriteValue("Divide");
                     break;
+                case "sqrt":
+                    result = Math.Sqrt(num1);
+                    writer.WriteValue("Square Root");
+                    break;
+                case "x10":
+                    result = num1 * 10;
+                    writer.WriteValue("10X");
+                    break;
+                case "pwr":
+                    result = Math.Pow(num1, num2);
+                    writer.WriteValue("Taking the power");
+                    break;
+                case "sin":
+                    result = Math.Sin(num1);
+                    writer.WriteValue("Sine");
+                    break;
+                case "cos":
+                    result = Math.Cos(num1);
+                    writer.WriteValue("Cosine");
+                    break;
+                case "tan":
+                    result = Math.Tan(num1);
+                    writer.WriteValue("Tangent");
+                    break;
                 // Return text for an incorrect option entry.
                 default:
                     break;

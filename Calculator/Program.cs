@@ -8,6 +8,7 @@ namespace CalculatorProgram
     {
         static void Main(string[] args)
         {
+            int timesUsed = 1;
             bool endApp = false;
             // Display title as the C# console calculator app.
             Console.WriteLine("Console Calculator in C#\r");
@@ -46,16 +47,31 @@ namespace CalculatorProgram
 
                 // Ask the user to choose an operator.
                 Console.WriteLine("Choose an operator from the following list:");
+                Console.WriteLine();
+                Console.WriteLine("\t---------------------------------------------------");
+                Console.WriteLine("\tThese operations use both numbers you entered");
+                Console.WriteLine("\t---------------------------------------------------");
                 Console.WriteLine("\ta - Add");
                 Console.WriteLine("\ts - Subtract");
                 Console.WriteLine("\tm - Multiply");
                 Console.WriteLine("\td - Divide");
+                Console.WriteLine("\tpwr - taking the power");
+                Console.WriteLine();
+                Console.WriteLine("\t---------------------------------------------------");
+                Console.WriteLine("\tThese operations use the first number you entered");
+                Console.WriteLine("\t---------------------------------------------------");
+                Console.WriteLine("\tsqrt - Square root");
+                Console.WriteLine("\tx10 - Times 10");
+                Console.WriteLine("\tsin - Sine");
+                Console.WriteLine("\tcos - Cosine");
+                Console.WriteLine("\ttan - Tangent");
+                Console.WriteLine($"Times used: {timesUsed}");
                 Console.Write("Your option? ");
 
                 string? op = Console.ReadLine();
 
                 // Validate input is not null, and matches the pattern
-                if (op == null || !Regex.IsMatch(op, "[a|s|m|d]"))
+                if (op == null || !Regex.IsMatch(op, "[a|s|m|d|sqrt|x10|pwr|sin|cos|tan]"))
                 {
                     Console.WriteLine("Error: Unrecognized input.");
                 }
@@ -80,6 +96,7 @@ namespace CalculatorProgram
                 // Wait for the user to respond before closing.
                 Console.Write("Press 'n' and Enter to close the app, or press any other key and Enter to continue: ");
                 if (Console.ReadLine() == "n") endApp = true;
+                else {timesUsed++;}
 
                 Console.WriteLine("\n"); // Friendly linespacing.
             }
