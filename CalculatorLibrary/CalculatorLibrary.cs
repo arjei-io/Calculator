@@ -103,6 +103,11 @@ namespace CalculatorLibrary
                     writer.WriteValue("Arctangent");
                     AddToList(timesUsed, OperationType.Arctangent, num1, num2, result);
                     break;
+                case "n":
+                    Console.Clear();
+                    Console.WriteLine("See you later!");
+                    Environment.Exit(0);
+                    break;
                 default:
                     break;
             }
@@ -206,6 +211,7 @@ Enter 'n' to return to main menu");
             Console.WriteLine($"\tasin - {OperationType.Arcsine}");
             Console.WriteLine($"\tacos - {OperationType.Arccosine}");
             Console.WriteLine($"\tatan - {OperationType.Arctangent}");
+            Console.WriteLine($"\n\tn - exit application\n");
             Console.Write("Your option? ");
 
             string? op = Console.ReadLine();
