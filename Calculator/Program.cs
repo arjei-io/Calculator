@@ -61,12 +61,14 @@ namespace CalculatorProgram
                 Console.WriteLine($"\tasin - Arcsine");
                 Console.WriteLine($"\tacos - Arccosine");
                 Console.WriteLine($"\tatan - Arctangent");
+                Console.WriteLine($"\n\tn - exit application\n");
+
                 Console.Write("Your option? ");
 
                 string? op = Console.ReadLine();
 
                 // Validate input is not null, and matches the pattern
-                if (op == null || !Regex.IsMatch(op, "[a|s|m|d|r|x|p|sin|cos|tan|asin|acos|atan]"))
+                if (op == null || !Regex.IsMatch(op, "[a|s|m|d|r|x|p|sin|cos|tan|asin|acos|atan|n]"))
                 {
                     Console.WriteLine("Error: Unrecognized input.");
                 }
@@ -93,24 +95,15 @@ namespace CalculatorProgram
 Enter 'h' to view history
 Enter to continue");
 
-                switch (Console.ReadLine())
-                {
-                    case "h":
-                        Console.Clear();
-                        calculator.DisplayList();
-                        break;
-                    case "n":
-                        endApp = true;
-                        break;
-                }
+                string? userInput = Console.ReadLine().Trim().ToLower();
 
-/*                if (Console.ReadLine() == "h")
+                if (userInput == "h")
                 {
                     Console.Clear();
                     calculator.DisplayList();
-                    return;
+
                 }
-                if (Console.ReadLine() == "n") endApp = true;*/
+                else if (userInput == "n") endApp = true;
 
                 Console.WriteLine("\n");
             }
