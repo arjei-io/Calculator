@@ -1,6 +1,5 @@
-﻿// Program.cs
+﻿using System.Text.RegularExpressions;
 using CalculatorLibrary;
-using System.Text.RegularExpressions;
 
 namespace CalculatorProgram
 {
@@ -9,19 +8,22 @@ namespace CalculatorProgram
     {
         static void Main(string[] args)
         {
+            int timesUsed = 1;
             bool endApp = false;
-
+            // Display title as the C# console calculator app.
             Console.WriteLine("Console Calculator in C#\r");
             Console.WriteLine("------------------------\n");
 
             Calculator calculator = new Calculator();
             while (!endApp)
             {
-
+                // Declare variables and set to empty.
+                // Use Nullable types (with ?) to match type of System.Console.ReadLine
                 string? numInput1 = "";
                 string? numInput2 = "";
                 double result = 0;
-                Console.Clear();
+
+                // Ask the user to type the first number.
                 Console.Write("Type a number, and then press Enter: ");
                 numInput1 = Console.ReadLine();
 
@@ -32,6 +34,7 @@ namespace CalculatorProgram
                     numInput1 = Console.ReadLine();
                 }
 
+                // Ask the user to type the second number.
                 Console.Write("Type another number, and then press Enter: ");
                 numInput2 = Console.ReadLine();
 
@@ -42,31 +45,33 @@ namespace CalculatorProgram
                     numInput2 = Console.ReadLine();
                 }
 
-                Console.Clear();
-                Console.WriteLine($"Your first number: {cleanNum1}");
-                Console.WriteLine($"Your second number: {cleanNum2}");
-                Console.WriteLine("Enter operation to carry out...");
-                Console.WriteLine($"\ta - Addition");
-                Console.WriteLine($"\ts - Subtraction");
-                Console.WriteLine($"\tm - Multiplication");
-                Console.WriteLine($"\td - Division");
-                Console.WriteLine($"\t--------------------------------------------");
-                Console.WriteLine($"\tThese operations only use the first number");
-                Console.WriteLine($"\tr - Square_root");
-                Console.WriteLine($"\tx - X10");
-                Console.WriteLine($"\tp - Taking the power");
-                Console.WriteLine($"\tsin - Sine");
-                Console.WriteLine($"\tcos - Cosine");
-                Console.WriteLine($"\ttan - Tangent");
-                Console.WriteLine($"\tasin - Arcsine");
-                Console.WriteLine($"\tacos - Arccosine");
-                Console.WriteLine($"\tatan - Arctangent");
+                // Ask the user to choose an operator.
+                Console.WriteLine("Choose an operator from the following list:");
+                Console.WriteLine();
+                Console.WriteLine("\t---------------------------------------------------");
+                Console.WriteLine("\tThese operations use both numbers you entered");
+                Console.WriteLine("\t---------------------------------------------------");
+                Console.WriteLine("\ta - Add");
+                Console.WriteLine("\ts - Subtract");
+                Console.WriteLine("\tm - Multiply");
+                Console.WriteLine("\td - Divide");
+                Console.WriteLine("\tpwr - taking the power");
+                Console.WriteLine();
+                Console.WriteLine("\t---------------------------------------------------");
+                Console.WriteLine("\tThese operations use the first number you entered");
+                Console.WriteLine("\t---------------------------------------------------");
+                Console.WriteLine("\tsqrt - Square root");
+                Console.WriteLine("\tx10 - Times 10");
+                Console.WriteLine("\tsin - Sine");
+                Console.WriteLine("\tcos - Cosine");
+                Console.WriteLine("\ttan - Tangent");
+                Console.WriteLine($"Times used: {timesUsed}");
                 Console.Write("Your option? ");
 
                 string? op = Console.ReadLine();
 
                 // Validate input is not null, and matches the pattern
-                if (op == null || !Regex.IsMatch(op, "[a|s|m|d|r|x|p|sin|cos|tan|asin|acos|atan]"))
+                if (op == null || !Regex.IsMatch(op, "[a|s|m|d|sqrt|x10|pwr|sin|cos|tan]"))
                 {
                     Console.WriteLine("Error: Unrecognized input.");
                 }
@@ -88,31 +93,12 @@ namespace CalculatorProgram
                 }
                 Console.WriteLine("------------------------\n");
 
-                Console.WriteLine("Total calculations done: " + calculator.timesUsed);
-                Console.WriteLine(@"
-Enter 'h' to view history
-Enter to continue");
+                // Wait for the user to respond before closing.
+                Console.Write("Press 'n' and Enter to close the app, or press any other key and Enter to continue: ");
+                if (Console.ReadLine() == "n") endApp = true;
+                else {timesUsed++;}
 
-                switch (Console.ReadLine())
-                {
-                    case "h":
-                        Console.Clear();
-                        calculator.DisplayList();
-                        break;
-                    case "n":
-                        endApp = true;
-                        break;
-                }
-
-/*                if (Console.ReadLine() == "h")
-                {
-                    Console.Clear();
-                    calculator.DisplayList();
-                    return;
-                }
-                if (Console.ReadLine() == "n") endApp = true;*/
-
-                Console.WriteLine("\n");
+                Console.WriteLine("\n"); // Friendly linespacing.
             }
             calculator.Finish();
             return;
