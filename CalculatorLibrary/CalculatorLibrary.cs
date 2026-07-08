@@ -241,12 +241,14 @@ Enter 'n' to return to main menu");
         {
             Console.WriteLine("Your session history:");
             Console.WriteLine("------------------------------------------------");
+            int i = 1;
             foreach (Calculation calculation in calculations)
             {
                 Console.WriteLine($@"
-ID: {calculation.CalculationId} {calculation.Type}
+ID: {i} {calculation.Type}
 Operands: {calculation.Operand1} & {calculation.Operand2}
 Result: {calculation.Result}");
+                i++;
             }
             Console.WriteLine("------------------------------------------------");
         }
