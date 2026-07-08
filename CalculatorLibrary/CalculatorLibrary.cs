@@ -238,7 +238,7 @@ Enter 'n' to return to main menu");
 
         }
 
-        public void PrintList()
+        public static void PrintList()
         {
             Console.WriteLine("Your session history:");
             Console.WriteLine("------------------------------------------------");
@@ -255,11 +255,3 @@ Result: {calculation.Result}");
 
     }
 }
-    
-
-
-
-
-
-
-

@@ -28,7 +28,5 @@ namespace CalculatorLibrary
         Arcsine,
         Arccosine,
         Arctangent
-
-
     }
 }
