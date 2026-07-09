@@ -37,12 +37,13 @@ Following Microsoft's tutorial: https://learn.microsoft.com/en-us/visualstudio/g
 - Follow instructions given even when you don't agree
 - Applying my own code into already existing base
 - Keep motivated when facing blockades
+- Keep motivated towards the end of the project.
 
 ## Lessons Learned
 - How to stick to guidelines given
 - I took my time trying to understand what the existing code does so I can modify it to the best of my abilities
 
 ## Areas to Improve
-- DRY principle and overall using more methods/functions to do the heavy lifting
+- DRY principle and overall using more methods/functions/classes to split the heavy lifting
 - Tidying up towards the end. Too often I have the mindset of "Ok, it works now. Just ship it". Instead I could test some edge cases or in this project some input values when used in different functions.
 
